@@ -1,5 +1,8 @@
 import re
 
+class CustomException(Exception):
+    pass
+
 class StringCalc():
     def add(self, numbers):
         if numbers == "":
@@ -13,8 +16,7 @@ class StringCalc():
         total = 0
         for number in number_list:
             if int(number) < 0:
-                # raise an exception if any negative numbers are found
-                raise Exception("Negatives not allowed: " + number)
+                raise CustomException("Negatives not allowed: " + number)
             print("number =" + number)
             total += int(number)
         return total
