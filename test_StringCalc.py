@@ -1,3 +1,5 @@
+from io import StringIO
+from unittest.mock import patch
 from StringCalc import *
 import pytest
 
@@ -44,3 +46,9 @@ def test_should_throw_exception_for_negative_numbers_4():
     with pytest.raises(CustomException) as e:
         StringCalc().add("-1")
     assert str(e.value) == "Negatives not allowed: -1"
+
+def test_should_print_numbers_and_sum_on_display_1():
+    # github copilot gave this... ;-)
+    with patch('sys.stdout', new=StringIO()) as fake_stdout:
+        StringCalc().add("1,2,3")
+        assert fake_stdout.getvalue() == "1 + 2 + 3 = 6\n"
