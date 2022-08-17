@@ -52,3 +52,14 @@ def test_should_print_numbers_and_sum_on_display_1():
     with patch('sys.stdout', new=StringIO()) as fake_stdout:
         StringCalc().add("1,2,3")
         assert fake_stdout.getvalue() == "1 + 2 + 3 = 6\n"
+
+def test_should_print_numbers_and_sum_on_display_2():
+    # use a display method not stdout
+    msg = ''
+    def mockdisplay(message):
+        nonlocal msg
+        msg = message
+    SC = StringCalc() # possible to have argument here instead of set_displaydriver() method
+    SC.set_displaydriver(mockdisplay) 
+    SC.add("1,2,3")
+    assert msg == "1 + 2 + 3 = 6" # no \n at the end since it is added by print()

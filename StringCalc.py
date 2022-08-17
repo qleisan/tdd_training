@@ -4,6 +4,9 @@ class CustomException(Exception):
     pass
 
 class StringCalc():
+    def __init__(self):
+        self.displaydriver = print
+
     def add(self, numbers):
         if numbers == "":
             return 0
@@ -23,8 +26,12 @@ class StringCalc():
             total += int(number)
         # remove last " + " and add total
         outstr = outstr[:-3] + " = "+str(total)
-        print(outstr)
+        #print(outstr)
+        self.displaydriver(outstr)
         return total
+
+    def set_displaydriver(self, displaydriver):
+        self.displaydriver = displaydriver
 
 # real test mocks display, check that the real thing works
 sc=StringCalc()
