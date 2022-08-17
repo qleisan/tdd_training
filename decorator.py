@@ -8,13 +8,14 @@ def g(func, *args, **kwargs):
         for kwarg in kwargs:
             print(kwarg, kwargs[kwarg])
 
-        func(*args, **kwargs)
+        return func(*args, **kwargs)
     return inner
 
 
 @g # or f=g(f) somewhere else
 def f(msg, a=1, b=2):
     print(f"Greetings from f() {msg} {a} {b}")
+    return a+b
 
 
 # print("1----------------")
@@ -24,5 +25,5 @@ def f(msg, a=1, b=2):
 # f("Again")
 # print("3----------------")
 
-f("More", b=4)
+print(f("More", b=4))
 
