@@ -1,7 +1,13 @@
 ## TDD - Red, Green, Refactor
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 
-### pytest notes:
+### Installation:
+
+```
+pip3 install -r requirements.txt
+```
+
+### Pytest notes:
 
 Official [pytest-documentation](https://docs.pytest.org/)
 
@@ -16,7 +22,22 @@ If a previously green test starts failing during "red", i.e. working to make a n
 @pytest.mark.skip(reason="new test disabled during refactoring")
 ```
 
-### python notes:
+### Code Formatting
+
+This project uses [black](https://github.com/psf/black) to format code.
+
+Format all files using command-line:
+```
+black <directory>
+```
+
+VSCode:
+- install VSCode extension [Python: Black](https://marketplace.visualstudio.com/items?itemName=ms-python.python)
+- shift+alt+f => format code
+- .vscode/settings.json file contains the settings for black to autoformat code on save.
+
+
+### Python notes:
 
 Socratica [youtube-video](https://youtu.be/nlCKrKGHSSk) on python exceptions.
 
