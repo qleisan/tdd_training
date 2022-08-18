@@ -55,3 +55,14 @@ def test_should_throw_exception_for_negative_numbers_4():
     with pytest.raises(CustomException) as e:
         StringCalc().add("-1")
     assert str(e.value) == "Negatives not allowed: -1"
+
+
+def test_should_print_numbers_and_sum_on_display_1():
+    msg = ""
+
+    def mockdisplay(message):
+        nonlocal msg
+        msg = message
+
+    StringCalc(mockdisplay).add("1,2,3")
+    assert msg == "1 + 2 + 3 = 6"
