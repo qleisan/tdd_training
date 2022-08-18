@@ -66,3 +66,10 @@ def test_should_print_numbers_and_sum_on_display_1():
 
     StringCalc(mockdisplay).add("1,2,3")
     assert msg == "1 + 2 + 3 = 6"
+
+
+def test_should_print_numbers_and_sum_on_display_2(mocker):
+    # convenience from mock package according to documentation - https://pytest-mock.readthedocs.io/en/latest/usage.html
+    m = mocker.MagicMock()
+    StringCalc(m).add("1,2,3")
+    m.assert_called_with("1 + 2 + 3 = 6")
