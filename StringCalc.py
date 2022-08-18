@@ -4,6 +4,9 @@ class CustomException(Exception):
     pass
 
 class StringCalc():
+    def __init__(self, display=None):
+        self.display = display
+    
     def add(self, numbers):
         if numbers == "":
             return 0
@@ -19,6 +22,8 @@ class StringCalc():
                 raise CustomException("Negatives not allowed: " + number)
             print("number =" + number)
             total += int(number)
+        if self.display is not None:
+            
         return total
 
 

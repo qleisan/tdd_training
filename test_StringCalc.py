@@ -44,3 +44,13 @@ def test_should_throw_exception_for_negative_numbers_4():
     with pytest.raises(CustomException) as e:
         StringCalc().add("-1")
     assert str(e.value) == "Negatives not allowed: -1"
+
+def test_should_show_expression_on_display():
+    # create a mock object for the display
+    display_expression = ""
+    def mockdisplay(s):
+        nonlocal display_expression
+        display_expression = s
+    SC = StringCalc(mockdisplay)
+    SC.add("1,2")
+    assert mockdisplay.display_expression == "1 + 2 = 3"
