@@ -25,17 +25,22 @@ If a previously green test starts failing during "red", i.e. working to make a n
 
 ### Code Formatting
 
-This project uses [black](https://github.com/psf/black) to format code.
+This project uses [black](https://github.com/psf/black) to format code and [flake8](https://flake8.pycqa.org/en/latest/) for linting.
 
 Format all files using command-line:
 ```
 black <directory>
 ```
-
+Lint all files:
+```
+flake8 --ignore=E203,E501
+```
 VSCode:
 - install VSCode extension [Python: Black](https://marketplace.visualstudio.com/items?itemName=ms-python.python)
 - shift+alt+f => format code
-- .vscode/settings.json file contains the settings for black to autoformat code on save.
+- `.vscode/settings.json` file contains VSCode settings for black and flake8
+    - black autoformat on save
+    - flake8 linting ("problems" tab and squiggly lines)
 
 
 ### Python notes:
