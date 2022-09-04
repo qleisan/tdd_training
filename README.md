@@ -1,5 +1,6 @@
 ## TDD - Red, Green, Refactor
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
+[![CI](https://github.com/qleisan/tdd_training/actions/workflows/CI.yaml/badge.svg)](https://github.com/qleisan/tdd_training/actions/workflows/CI.yaml)
 
 ### Installation:
 

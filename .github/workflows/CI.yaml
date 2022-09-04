@@ -1,0 +1,37 @@
+name: CI
+
+on: [push]
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+      with:
+        # Check out at the last commit (pre-automated merge, we don't care about the temporary commit for linting)
+        ref: ${{ github.event.pull_request.head.sha }}
+    - name: Install dependencies
+      run: |
+        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+    - name: Lint with flake8
+      run: |
+        flake8 --ignore=E203,E501
+    - name: Check formatting with black
+      run: |
+        black --check .
+
+  test:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+      with:
+        # Check out at the last commit (pre-automated merge, we don't care about the temporary commit for linting)
+        ref: ${{ github.event.pull_request.head.sha }}
+    - name: Install dependencies
+      run: |
+        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+    - name: Test with pytest
+      run: |
+        pytest -v
