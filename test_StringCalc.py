@@ -1,4 +1,4 @@
-from StringCalc import *
+from StringCalc import StringCalc, CustomException
 import pytest
 
 
