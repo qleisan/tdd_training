@@ -1,4 +1,4 @@
-from fizzbuzz import fizzbuzz
+from fizzbuzz import fizzbuzz, print_fizzbuzz_1_100
 
 
 def test_should_return_FizzBuzz():
@@ -18,3 +18,11 @@ def test_should_return_FizzBuzz():
     assert fizzbuzz(14) == 14
     assert fizzbuzz(15) == "FizzBuzz"
     assert fizzbuzz(16) == 16
+
+
+def test_should_print_something_from_1_to_100(mocker):
+    m = mocker.MagicMock()
+
+    print_fizzbuzz_1_100(m)
+    m.assert_called()
+    m.assert_called_with("FizzBuzz")

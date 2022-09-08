@@ -7,3 +7,11 @@ def fizzbuzz(n):
     if ret == "":
         ret = n
     return ret
+
+
+def print_fizzbuzz_1_100(display_function):
+    for i in range(1, 101):
+        display_function(fizzbuzz(i))
+
+
+print_fizzbuzz_1_100(print)
