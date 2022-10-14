@@ -1,7 +1,10 @@
 class Fraction:
-    def __init__(self, numerator, denominator):
+    def __init__(self, numerator, denominator=1):
         self.numerator = numerator
         self.denominator = denominator
+        gcd = self._gcd()
+        self.numerator = self.numerator // gcd
+        self.denominator = self.denominator // gcd
 
     def __add__(self, other):
         ret = None
@@ -12,8 +15,7 @@ class Fraction:
                 self.numerator * other.denominator + self.denominator * other.numerator,
                 self.denominator * other.denominator,
             )
-        gcd = ret._gcd()
-        return Fraction(ret.numerator // gcd, ret.denominator // gcd)
+        return ret
 
     def __eq__(self, other):
         # reduce both fractions to their lowest terms
@@ -22,7 +24,12 @@ class Fraction:
         return a.numerator == b.numerator and a.denominator == b.denominator
 
     def __str__(self):
-        return f"{self.numerator}/{self.denominator}"
+        ret = ""
+        if self.denominator == 1:
+            ret = str(self.numerator)
+        else:
+            ret = f"{self.numerator}/{self.denominator}"
+        return ret
 
     def _gcd(self):
         # find the greatest common divisor of the numerator and denominator
